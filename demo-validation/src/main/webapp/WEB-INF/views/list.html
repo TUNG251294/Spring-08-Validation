@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset= "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{create}">Create new account</a>
+<h1>ACCOUNT LIST</h1>
+<form>
+    Search by name:
+    <input name="search" type="text"/>
+    <input type="submit" value="Search"/>
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>Password</th>
+        <th>Access</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tr th:each="a : ${accounts}">
+        <td th:text="${a.id}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${a.id})}" th:text="${a.username}"></a>
+        </td>
+        <td th:text="${a.password}"></td>
+        <td th:text="${a.address}"></td>
+        <td>
+            <a th:href="@{/delete/__${a.id}__}" th:text="delete"></a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
